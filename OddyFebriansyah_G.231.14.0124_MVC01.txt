@@ -1,0 +1,38 @@
+Nama	:	Oddy Febriansyah
+NIM	:	G.231.14.0124
+
+
+
+1. Apa sajakah variabel / object yang dibuat?
+
+ModelAndView = berada di /SpringMvc01/src/com/tobuku/controller/HelloWorld.java digunakan untuk mengalihkan page ke welcome.jsp lalu melewatkan variabel "message" untuk ditampilkan ke page welcome.jsp.
+${message} = merupakan variabel untuk menerima data dari file helloworld.java setelah tertampung di variabe ini lalu data di tampilkan di page welcome.jsp
+message = berada di /SpringMvc01/src/com/tobuku/controller/HelloWorld.java variabel ini berfungsi untuk menampung data "<<< Ola, welcome to the Spring MVC World >>> ..." yg nanti akan di tampilkan di alamat "http://localhost:8080/SpringMvc01/helo.html".
+
+2. Apa sajakah package yang di buat?
+
+package yang di buat adalah = com.tokobuku.controller (sebagai controller)
+
+3. Bagaimanakah alur logic programming nya? Manakah model nya? viewnya? dan Controller nya?
+
+a. web.xml ("/SpringMvc01/WebContent/WEB-INF/web.xml") bertugas menginisialisasi file apa saja yang akan di load dan maping servlet name beserta class nya untuk list file yng di load terdapat pada tag "<welcome-file-list>...</welcome-file-list>spring yang terdapat pada file my-spring-sevlet. Pada bagian <welcome-file> merupakan syntax untuk mendefine file apa yang akan menjadi halaman awal. inisialisasi servlet class "<servlet-class>...</servlet-class>" dan mapping servlet "<servlet-mapping>...</servlet-mapping>"
+
+b. lalu my-spring-sevlet.xml melakukan meng-import package com.tokobuku.controller dan membuat property bean yang berisi prefix name = /WEB-INF/jsp/ dan suffix name = .jsp (me-load semua extension untuk view)
+
+c. File index.jsp merupakan file pertama yang dieksekusi (ditampilkan pertama di web) yang berisi kode html
+
+d. link Hello.html yang terdapat pada index.jsp merupakan pemanggilan halaman baru yang nanti akan di maping kan ke file HelloWorld.java (controller) dengan syntax "@RequestMapping("/helo")" . 
+
+e. pada method "public ModelAndView helloWorld()" yang terdapat pada file HelloWorld.java (controller) mengembalikan (return) sebuah object yaitu "ModelAndView", yang mana pada object tersebut terdapat 3 parameter. parameter pertama yaitu nama view, kedua nama model (variabel message) dan ketiga object model. 
+
+f. Pada file welcome.jsp (sebagai view), menampilkan kode html ke web dan mengeluarkan data dari variabel ($(message)) yang sudah dilewatkan ke object "ModelAndView" (variabel message)
+
+- Manakah Model nya?
+  model nya adalah variabel message yang terdapat di file /SpringMvc01/src/com/tobuku/controller/HelloWorld.java, karena pada dasarnya model berperan sebagai pengirim data (menampung data statis/dinamis)
+
+
+- Manakah View nya?
+  view nya adalah index.jsp yang berada di /SpringMvc01/WebContent/index.jsp, dan welcome.jsp berada di /SpringMvc01/WebContent/WEB-INF/jsp/welcome.jsp, view hanya berperan untuk menampilkan data ke web (biasanya memiliki ekstensi .html .jsp dll)
+
+- Manakah Controller nya?
+  controller nya adalah HelloWorld.java yang berada di /SpringMvc01/src/com/tobuku/controller/HelloWorld.java, controller hanya bertugas untuk menjembatani antara model (penampung data) dan view (penampil data) agar dapat menampilkan data yang di inginkan dan biasanya controller juga bertugas mengolah (logic) data dari model (data mentah) diolah dulu di controller lalu di teruskan ke view
